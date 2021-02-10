@@ -1,15 +1,22 @@
-// import { StatusBar } from 'expo-status-bar';
-import React, { Component, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-class Yugi extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <StatusBar style="auto" />
-      </View>
-    );
-  }
+const Yugi = () => {
+  const [wasInvoked, setWasInvoked] = useState(false)
+  return (
+    <View style={styles.container}>
+      <Text>No me la conteiner yugi</Text>
+      <Button onPress={() => {
+        setWasInvoked(true);
+        getDM;
+      }} title="Invocar"/>
+      <Text>{ wasInvoked ? 'invocado' : 'dale perro'}</Text>
+    </View>
+  );
+}
+
+function getDM() {
+  console.log('invocan2')
 }
 
 const styles = StyleSheet.create({
@@ -21,4 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Yugi
+export default Yugi;
