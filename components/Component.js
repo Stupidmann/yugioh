@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View, Button, Text } from 'react-native';
 import ShowCardDetails from './ShowCardDetails'
 
 const Yugi = () => {
   const [cardData, setCardData] = useState({})
   const [anyCard, setAnyCard] = useState({})
+
+  // let asd = null;
+  // if ( !!Object.keys(cardData).length ) {
+  //   asd = <ShowCardDetails cardData={cardData} />
+  // } else {
+  //   asd = <Text>no data</Text>
+  // }
 
   return (
     <View style={styles.container}>
@@ -13,14 +20,13 @@ const Yugi = () => {
           setCardData(res)
         })
       }} title="Invocar Dark magician"/>
-      <>{Object.keys(cardData).length ? <ShowCardDetails cardData={cardData} /> : 'no data'}</>
-
+      <>{Object.keys(cardData).length ? <ShowCardDetails cardData={cardData} /> : <Text>no data</Text>}</>
       <Button onPress={() => {
         getRandomCard().then((res) => {
           setAnyCard(res)
         })
       }} title="Mostrar cualquier carta"/>
-      <>{Object.keys(anyCard).length ? <ShowCardDetails cardData={anyCard} /> : 'no data'}</>
+      <>{Object.keys(anyCard).length ? <ShowCardDetails cardData={anyCard} /> : <Text>no data</Text>}</>
     </View>
   );
 }
@@ -42,6 +48,7 @@ function getRandomCard() {
   return fetch(url)
     .then(res => res.json())
     .then((result) => {
+      console.log(result)
       return result
     })
 }
